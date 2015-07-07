@@ -24,6 +24,7 @@ class AssignmentController extends Controller
     public $userClassName;
     public $idField = 'id';
     public $usernameField = 'username';
+    public $extraFields = [];
     public $searchClass;
 
     /**
@@ -74,6 +75,7 @@ class AssignmentController extends Controller
                 'searchModel' => $searchModel,
                 'idField' => $this->idField,
                 'usernameField' => $this->usernameField,
+                'extraFields' => $this->extraFields,
         ]);
     }
 
@@ -90,6 +92,7 @@ class AssignmentController extends Controller
                 'model' => $model,
                 'idField' => $this->idField,
                 'usernameField' => $this->usernameField,
+                'extraFields' => $this->extraFields,
         ]);
     }
 

@@ -7,13 +7,29 @@ use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $model yii\web\IdentityInterface */
+/* @var $extraFields string[] */
 
 $this->title = Yii::t('rbac-admin', 'Assignments');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="assignment-index">
     <?= Html::a(Yii::t('rbac-admin', 'Users'), ['index'], ['class' => 'btn btn-success']) ?>
-    <h1><?= Yii::t('rbac-admin', 'User') ?>: <?= Html::encode($model->{$usernameField}) ?></h1>
+    <h1><?= Yii::t('rbac-admin', 'User') ?>: <?= Html::encode($model->{$usernameField}) ?>
+        <?php
+        if (count($extraFields) > 0) {
+            $texts = [];
+            foreach ($extraFields as $field) {
+                $attrs = explode('.', $field);
+                $obj = $model;
+                foreach ($attrs as $attr) {
+                    $obj = $obj->$attr;
+                }
+                $texts[] = Html::encode($obj);
+            }
+            echo " (" . implode(" ", $texts) . ")";
+        }
+        ?>
+    </h1>
 
     <div class="row">
         <div class="col-lg-5">

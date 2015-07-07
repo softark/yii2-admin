@@ -7,6 +7,8 @@ use yii\widgets\Pjax;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 /* @var $searchModel mdm\admin\models\searchs\Assignment */
+/* @var $usernameField string */
+/* @var $extraFields string[] */
 
 $this->title = Yii::t('rbac-admin', 'Assignments');
 $this->params['breadcrumbs'][] = $this->title;
@@ -19,20 +21,21 @@ $this->params['breadcrumbs'][] = $this->title;
     Pjax::begin([
         'enablePushState'=>false,
     ]);
+    $columns = [
+        ['class' => 'yii\grid\SerialColumn'],
+        $usernameField,
+    ];
+    foreach($extraFields as $field) {
+        $columns[] = $field;
+    }
+    $columns[] = [
+        'class' => 'yii\grid\ActionColumn',
+        'template'=>'{view}'
+    ];
     echo GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-            [
-                'class' => 'yii\grid\DataColumn',
-                'attribute' => $usernameField,
-            ],
-            [
-                'class' => 'yii\grid\ActionColumn',
-                'template'=>'{view}'
-            ],
-        ],
+        'columns' => $columns,
     ]);
     Pjax::end();
     ?>
