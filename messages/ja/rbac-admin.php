@@ -25,6 +25,8 @@ return [
     'Assignments' => '権限の割当て',
     'Avaliable' => '割当て可能',
     'Class Name' => 'クラス名',
+    'Cache' => 'キャッシュ',
+    'Clear Cache' => 'キャッシュをクリア',
     'Create' => '作成',
     'Create Menu' => 'メニューを作成',
     'Create Permission' => '許可を作成',
