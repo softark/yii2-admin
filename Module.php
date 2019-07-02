@@ -39,6 +39,11 @@ use yii\helpers\Inflector;
 class Module extends \yii\base\Module
 {
     /**
+     * @var string module name
+     */
+    public $moduleName = 'RBAC';
+    
+    /**
      * @inheritdoc
      */
     public $defaultRoute = 'assignment';
