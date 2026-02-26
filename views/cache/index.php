@@ -22,10 +22,16 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php
 if (Yii::$app->session->hasFlash('auth.cache.cleared')) {
     $this->registerJs("
-bootbox.setLocale('ja');
 bootbox.alert({
-    title: 'キャッシュをクリアしました。',
-    message: 'RBAC のキャッシュをクリアしました。'
+  title:'確認',
+  message:'RBAC のキャッシュをクリアしました。',
+  closeButton:false,
+  buttons:{
+    ok:{
+      label:'<i class=\"fa-solid fa-check\"></i> OK',
+      className:'btn-primary'
+    }
+  }
 });
 ");
 }
